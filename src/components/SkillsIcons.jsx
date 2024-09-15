@@ -4,8 +4,8 @@ import React from 'react';
 
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaDocker, FaJava } from 'react-icons/fa';
 import {
-    SiTypescript, SiRedux, SiTailwindcss, SiMongodb, SiPostgresql, SiNextdotjs, SiExpress, SiFramer, SiAndroidstudio,
-    SiPython, SiCplusplus, SiFirebase, SiReact, SiChakraui
+    SiTypescript, SiRedux, SiTailwindcss, SiMongodb, SiPostgresql, SiNextdotjs, SiExpress, SiFramer, SiAndroidstudio,  SiShadcnui,
+    SiPython, SiCplusplus, SiFirebase, SiReact, SiChakraui , SiRecoil
 } from 'react-icons/si';
 
 const skillsData = [
@@ -20,9 +20,9 @@ const skillsData = [
     { name: "Next.js", icon: <SiNextdotjs color="#ffffff" size={40} className="bg-black p-1 rounded" /> },
     { name: "Git", icon: <FaGitAlt color="#F05032" size={40} /> },
     { name: "Redux", icon: <SiRedux color="#764ABC" size={40} /> },
-    { name: "Recoil", icon: <SiFramer color="#ffffff" size={40} className="bg-black p-1 rounded" /> },
+    { name: "Recoil", icon: <SiRecoil color="#ffffff" size={40} className="bg-black p-1 rounded" /> },
     { name: "Tailwind", icon: <SiTailwindcss color="#38B2AC" size={40} /> },
-    { name: "ShadCn", icon: <SiFramer color="#8B5CF6" size={40} /> },
+    { name: "ShadCn", icon: <SiShadcnui color="#8B5CF6" size={40} /> },
     { name: "PostgreSQL", icon: <SiPostgresql color="#336791" size={40} /> },
     { name: "Docker", icon: <FaDocker color="#2496ED" size={40} /> },
     { name: "Java", icon: <FaJava color="#007396" size={40} /> },

@@ -3,63 +3,8 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
+import { projectsData } from "@/data/projectData";
 
-const projectsData = [
-  {
-    id: 1,
-    title: "Quick Bites",
-    description: "Project 1 description",
-    image: "/images/projects/quickbites.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/AhsanShahzad5/Quick-Bites-Frontend",
-    previewUrl: "https://quick-bites-frontend-za1k.onrender.com/",
-  },
-  {
-    id: 2,
-    title: "Social Link",
-    description: "Project 2 description",
-    image: "/images/projects/socialLink3.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/AhsanShahzad5/Social-Link",
-    previewUrl: "https://social-link-iz2i.onrender.com/",
-  },
-  {
-    id: 3,
-    title: "Next-Js Developer Protfolio",
-    description: "Project 3 description",
-    image: "/images/projects/portfolio2.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/AhsanShahzad5/my-portfolio-final",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
-    title: "Newzy",
-    description: "Project 4 description",
-    image: "/images/projects/newzy.png",
-    tag: ["All", "Mobile"],
-    gitUrl: "https://github.com/AhsanShahzad5/Newzy",
-    previewUrl: "",
-  },
-  {
-    id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-];
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -101,7 +46,7 @@ const ProjectsSection = () => {
           isSelected={tag === "Mobile"}
         />
       </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={index}
@@ -117,6 +62,7 @@ const ProjectsSection = () => {
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
+              techStack={project.techStack}
             />
           </motion.li>
         ))}
