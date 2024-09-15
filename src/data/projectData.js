@@ -52,7 +52,7 @@ export const projectsData = [
       image: "/images/projects/portfolio2.png",
       tag: ["All", "Web"],
       gitUrl: "https://github.com/AhsanShahzad5/my-portfolio-final",
-      previewUrl: "/",
+      previewUrl: "https://my-portfolio-final.vercel.app/",
       techStack:[typescript,nextjs, tailwind , framer]
     },
     {
