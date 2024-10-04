@@ -5,23 +5,23 @@ import {
 } from 'react-icons/si';
 import { TbFileTypeXml } from "react-icons/tb";
 
-const react = (<FaReact color="#61DAFB" size={40} />)
-const node = (<FaNodeJs color="#339933" size={40} />);
-const express = (<SiExpress color="#ffffff" size={40} className="bg-black p-1 rounded" />);
-const mongo = <SiMongodb color="#47A248" size={40} /> 
-const typescript = <SiTypescript color="#3178C6" size={40} />
-const auth0 = (<SiAuth0 size={40} color="#EB5424" />)
-const shadcn = <SiShadcnui color="#8B5CF6" size={37} />
-const javaScript = <FaJsSquare color="#F7DF1E" size={40} />
-const recoil = <SiRecoil color="#ffffff" size={40} className="bg-black p-1 rounded" />
-const nextjs = <SiNextdotjs color="#ffffff" size={40} className="bg-black p-1 rounded" />
-const tailwind = <SiTailwindcss color="#38B2AC" size={40} />
-const framer = <SiFramer size={38} color='red'/>
-const css = <FaCss3Alt color="#1572B6" size={40} />
-const java = <FaJava color="#007396" size={40} />
-const androidStudio = <SiAndroidstudio color="#3DDC84" size={40} />
-const html = <FaHtml5 color="#E34F26" size={40} />
-const xml = <TbFileTypeXml size={40} color="#3DDC84" />
+const react = (<FaReact color="#61DAFB" className="w-8 h-8 sm:w-10 sm:h-10" />);
+const node = (<FaNodeJs color="#339933" className="w-8 h-8 sm:w-10 sm:h-10" />);
+const express = (<SiExpress color="#ffffff" className="bg-black p-1 rounded w-8 h-8 sm:w-10 sm:h-10" />);
+const mongo = <SiMongodb color="#47A248" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const typescript = <SiTypescript color="#3178C6" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const auth0 = (<SiAuth0 color="#EB5424" className="w-8 h-8 sm:w-10 sm:h-10" />);
+const shadcn = <SiShadcnui color="#8B5CF6" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const javaScript = <FaJsSquare color="#F7DF1E" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const recoil = <SiRecoil color="#ffffff" className="bg-black p-1 rounded w-8 h-8 sm:w-10 sm:h-10" />;
+const nextjs = <SiNextdotjs color="#ffffff" className="bg-black p-1 rounded w-8 h-8 sm:w-10 sm:h-10" />;
+const tailwind = <SiTailwindcss color="#38B2AC" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const framer = <SiFramer color="red" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const css = <FaCss3Alt color="#1572B6" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const java = <FaJava color="#007396" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const androidStudio = <SiAndroidstudio color="#3DDC84" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const html = <FaHtml5 color="#E34F26" className="w-8 h-8 sm:w-10 sm:h-10" />;
+const xml = <TbFileTypeXml color="#3DDC84" className="w-8 h-8 sm:w-10 sm:h-10" />;
 
 export const projectsData = [
     {
