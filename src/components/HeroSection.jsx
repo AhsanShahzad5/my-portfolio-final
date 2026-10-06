@@ -1,74 +1,99 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import HeroGrid from "./HeroGrid";
+import { hero, siteLinks } from "@/data/site";
+
+const rise = (delay) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+});
+
+const socialStyles = "text-xl text-[#ADB7BE] transition-colors hover:text-white";
 
 const HeroSection = () => {
   return (
-    <section className="lg:py-16" id="hero">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
+    <section
+      id="hero"
+      className="relative flex min-h-[calc(100vh-5rem)] scroll-mt-24 flex-col justify-center py-14"
+    >
+      <HeroGrid />
+
+      {/* soft background glow, purely decorative */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 top-0 h-[26rem] w-[26rem] rounded-full bg-primary-500/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-8 top-48 h-[20rem] w-[20rem] rounded-full bg-secondary-500/10 blur-3xl"
+      />
+
+      <div className="relative max-w-3xl">
+        <motion.p {...rise(0.08)} className="mb-2 text-base text-[#ADB7BE]">
+          {hero.greeting} <span className="font-medium text-white">{hero.name}</span>
+        </motion.p>
+
+        <motion.h1
+          {...rise(0.16)}
+          className="text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600" >
-              Hi, I&apos;m{" "}
-            </span>
-            <br></br>
-            <TypeAnimation
-              sequence={[
-                "Ahsan Shahzad",
-                1000,
-                "Web Developer",
-                1000,
-                "Mobile Developer",
-                1000
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-          Converting complex problems into elegant web and mobile solutions </p>
-          <div>
-            <Link
-              href="/#contact"
-              className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
-            >
-              Hire Me
-            </Link>
-            <Link href="/#projects"
-              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
-            >
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                View My Work
-              </span>
-            </Link>
-          </div>
+          {hero.headline[0]}{" "}
+          <span className="bg-linear-to-r from-primary-400 to-secondary-500 bg-clip-text text-transparent">
+            {hero.headline[1]}
+          </span>{" "}
+          {hero.headline[2]}
+        </motion.h1>
+
+        <motion.p {...rise(0.24)} className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#ADB7BE] sm:text-base">
+          {hero.subtitle}
+        </motion.p>
+
+        <motion.div {...rise(0.32)} className="mt-7 flex flex-wrap items-center gap-3">
+          <Link
+            href="#projects"
+            className="rounded-full bg-linear-to-br from-primary-500 to-secondary-500 px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+          >
+            {hero.buttons.work}
+          </Link>
+          <Link
+            href="#contact"
+            className="rounded-full border border-[#33353F] px-5 py-2.5 text-sm font-medium text-white hover:border-white"
+          >
+            {hero.buttons.contact}
+          </Link>
+          <a
+            href={siteLinks.resume}
+            download
+            className="inline-flex items-center gap-2 py-2.5 text-sm text-[#ADB7BE] hover:text-white sm:px-2"
+          >
+            <ArrowDownTrayIcon className="h-5 w-5" />
+            {hero.buttons.resume}
+          </a>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-4 place-self-center mt-4 lg:mt-0"
-        >
-          <div className="rounded-full bg-[#181818] w-[200px] h-[200px] ml-10 lg:w-[350px] lg:h-[350px] relative">
-            <Image
-              src="/images/Profile.png"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded bg-current"
-              width={350}
-              height={350}
-            />
-          </div>
+
+        <motion.div {...rise(0.4)} className="mt-5 flex items-center gap-5">
+          <a href={siteLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={socialStyles}>
+            <FaGithub />
+          </a>
+          <a href={siteLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={socialStyles}>
+            <FaLinkedin />
+          </a>
         </motion.div>
+
       </div>
+
+      <Link
+        href="#about"
+        className="relative mt-14 hidden items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500 hover:text-white sm:flex"
+      >
+        Scroll
+        <span className="h-px w-12 bg-slate-600" />
+      </Link>
     </section>
   );
 };
