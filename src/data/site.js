@@ -27,7 +27,7 @@ export const hero = {
 
 // Section numbering, titles and short notes (SectionHeader). Experience and projects notes live with their data.
 export const sections = {
-  about: { index: "01", label: "About", title: "A GenAI engineer who cares what happens after the demo." },
+  about: { index: "01", label: "About", title: "An AI engineer who cares what happens after the demo." },
   stack: {
     index: "02",
     label: "Technologies",
