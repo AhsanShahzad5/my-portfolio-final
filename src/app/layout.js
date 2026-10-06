@@ -4,9 +4,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ahsan's Portfolio",
+  title: "Ahsan Shahzad | AI/ML Engineer",
   description:
-    "Portfolio of Ahsan Shahzad, a software engineer building AI/ML Solutions",
+    "Portfolio of Ahsan Shahzad, an AI/ML engineer building production GenAI systems (RAG, LangGraph agents) with hands-on ML, deep learning and MLOps projects.",
 };
 
 export default function RootLayout({ children }) {

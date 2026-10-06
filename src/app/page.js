@@ -6,6 +6,8 @@ import EmailSection from "../components/EmailSection";
 import Footer from "../components/Footer";
 import AchievementsSection from "../components/AchievementsSection";
 import Skills from "@/components/Skills";
+import ExperienceSection from "@/components/ExperienceSection";
+import EducationSection from "@/components/EducationSection";
 // import './globals.css'
 
 export default function Home() {
@@ -16,8 +18,10 @@ export default function Home() {
         <HeroSection />
         <AchievementsSection />
         <AboutSection />
-        <Skills/>
+        <ExperienceSection />
         <ProjectsSection />
+        <Skills />
+        <EducationSection />
         <EmailSection />
       </div>
       <Footer />

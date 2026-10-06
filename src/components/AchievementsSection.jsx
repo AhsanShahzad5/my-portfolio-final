@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
+import { achievements } from "@/data/site";
 
 const AnimatedNumbers = dynamic(
   () => {
@@ -9,36 +10,15 @@ const AnimatedNumbers = dynamic(
   { ssr: false }
 );
 
-const achievementsList = [
-  {
-    metric: "Projects",
-    value: "25",
-    postfix: "+",
-  },
-  {
-    prefix: "~",
-    metric: "Users",
-    value: "300",
-  },
-  {
-    metric: "Years",
-    value: "2",
-    postfix : "+"
-
-  },
-];
-
 const AchievementsSection = () => {
   return (
-    <section id="achievements">
-      
-    <div className="py-2 px-4 xl:gap-16 sm:py-2 xl:px-16  border-red-500 ">
-      <div className="sm:border-[#33353F] sm:border rounded-md py-8 px-16 flex flex-col sm:flex-row items-center justify-between">
-        {achievementsList.map((achievement, index) => {
+    <section id="achievements" className="pt-4">
+      <div className="grid grid-cols-1 gap-8 rounded-md py-8 px-6 sm:grid-cols-3 sm:border sm:border-[#33353F]">
+        {achievements.map((achievement) => {
           return (
             <div
-              key={index}
-              className="flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
+              key={achievement.metric}
+              className="flex flex-col items-center justify-center text-center"
             >
               <h2 className="text-white text-4xl font-bold flex flex-row">
                 {achievement.prefix}
@@ -57,12 +37,11 @@ const AchievementsSection = () => {
                 />
                 {achievement.postfix}
               </h2>
-              <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
+              <p className="text-[#ADB7BE] text-base text-center">{achievement.metric}</p>
             </div>
           );
         })}
       </div>
-    </div>
     </section>
   );
 };

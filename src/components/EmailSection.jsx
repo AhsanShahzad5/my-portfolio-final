@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import emailjs from '@emailjs/browser';
 import Spinner from "./Spinner";
+import { contact } from "@/data/site";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -40,19 +41,14 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 gap-4 relative py-24 "
+      className="grid md:grid-cols-2 gap-8 relative pt-16 md:pt-20 pb-16"
     >
       <div className="bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
+          {contact.heading}
         </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
+        <p className="text-[#ADB7BE] mb-4 max-w-md">{contact.body}</p>
         <div className="socials flex flex-row gap-2">
           <a target="_blank" href="https://github.com/AhsanShahzad5">
             <Image src={GithubIcon} alt="Github Icon" />
