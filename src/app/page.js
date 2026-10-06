@@ -1,27 +1,22 @@
-import HeroSection from "../components/HeroSection";
-import Navbar from "../components/Navbar";
-import AboutSection from "../components/AboutSection";
-import ProjectsSection from "../components/ProjectsSection";
-import EmailSection from "../components/EmailSection";
-import Footer from "../components/Footer";
-import AchievementsSection from "../components/AchievementsSection";
-import Skills from "@/components/Skills";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import StackSection from "@/components/StackSection";
 import ExperienceSection from "@/components/ExperienceSection";
-import EducationSection from "@/components/EducationSection";
-// import './globals.css'
+import ProjectsSection from "@/components/ProjectsSection";
+import EmailSection from "@/components/EmailSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex  flex-col bg-[#121212]">
+    <main className="flex flex-col overflow-x-clip bg-[#121212]">
       <Navbar />
-      <div className="container mt-24 mx-auto px-12 pt-1 pb-0">
+      <div className="mx-auto max-w-[77rem] px-6 pt-20 sm:px-10">
         <HeroSection />
-        <AchievementsSection />
         <AboutSection />
+        <StackSection />
         <ExperienceSection />
         <ProjectsSection />
-        <Skills />
-        <EducationSection />
         <EmailSection />
       </div>
       <Footer />

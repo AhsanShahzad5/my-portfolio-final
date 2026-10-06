@@ -8,28 +8,36 @@ export const siteLinks = {
 };
 
 export const navLinks = [
-  { title: "Home", path: "/" },
   { title: "About", path: "#about" },
+  { title: "Technologies", path: "#stack" },
   { title: "Experience", path: "#experience" },
   { title: "Projects", path: "#projects" },
-  { title: "Skills", path: "#skills" },
   { title: "Contact", path: "#contact" },
 ];
 
 export const hero = {
   greeting: "Hi, I'm",
-  // TypeAnimation sequence entries (text, pause in ms)
-  roles: ["Ahsan Shahzad", "an AI/ML Engineer", "a GenAI & RAG builder", "an Agent Workflow Developer"],
+  name: "Ahsan Shahzad",
+  // The middle part is rendered with the gradient.
+  headline: ["AI/ML engineer building", "GenAI systems", "that hold up in production."],
   subtitle:
     "I build GenAI systems that hold up in production, RAG pipelines and multi-agent workflows with LangChain and LangGraph, and I back that up with ML, deep learning and MLOps projects of my own.",
   buttons: { contact: "Hire Me", work: "View My Work", resume: "Download Resume" },
 };
 
-export const achievements = [
-  { metric: "Years building production GenAI", value: "1", postfix: "+" },
-  { metric: "GenAI systems built at Folium AI", value: "4" },
-  { metric: "ML / DL / GenAI projects on GitHub", value: "10", postfix: "+" },
-];
+// Section numbering, titles and short notes (SectionHeader). Experience and projects notes live with their data.
+export const sections = {
+  about: { index: "01", label: "About", title: "A GenAI engineer who cares what happens after the demo." },
+  stack: {
+    index: "02",
+    label: "Technologies",
+    title: "The technologies, drawn as the system they run on.",
+    note: "Not a skills list. Hover or tap any technology to see where I've actually used it.",
+  },
+  experience: { index: "03", label: "Experience", title: "Shipping GenAI systems for real products." },
+  projects: { index: "04", label: "Projects", title: "Built just to see how it all works." },
+  contact: { index: "05", label: "Contact", title: "Let's talk." },
+};
 
 export const about = {
   heading: "About Me",
@@ -38,12 +46,6 @@ export const about = {
     "What I enjoy most is the part between a working demo and something you can trust: structured outputs, fallbacks, tracing, tests, and knowing what a pipeline costs per request.",
     "Outside work I've been going deep on the rest of the field: classical ML and deep learning, evaluating LLM applications properly, MCP, and MLOps with DVC and MLflow. I'll be upfront about where my experience is: my production work is in GenAI. The classical ML and deep learning side lives in the projects below, built end to end on my own, and that's the side I'm actively growing into.",
   ],
-};
-
-export const projectsIntro = {
-  heading: "My Projects",
-  subheading:
-    "The GenAI work above is client work, so it isn't public. These are the projects I built on my own, to learn the rest of the field properly.",
 };
 
 export const education = {
@@ -65,6 +67,16 @@ export const education = {
       name: "LangSmith Essentials",
       issuer: "LangChain Academy",
       url: "https://academy.langchain.com/certificates/eddgusuv4k",
+    },
+    {
+      name: "React Basics",
+      issuer: "HackerRank",
+      url: "https://res.cloudinary.com/ahsancloudinary/image/upload/v1746439543/react_basic_czwi0j.png",
+    },
+    {
+      name: "NodeJS Intermediate",
+      issuer: "HackerRank",
+      url: "https://res.cloudinary.com/ahsancloudinary/image/upload/v1746439541/nodejs_intermediate_qgpeg3.png",
     },
   ],
 };

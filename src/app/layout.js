@@ -1,7 +1,8 @@
-import { Inter } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const jetbrainsMono = JetBrains_Mono({ variable: "--font-jetbrains-mono", subsets: ["latin"] });
 
 export const metadata = {
   title: "Ahsan Shahzad | AI/ML Engineer",
@@ -12,7 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body
+        className={`${geistSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        suppressHydrationWarning={true}
+      >
         {children}
       </body>
     </html>

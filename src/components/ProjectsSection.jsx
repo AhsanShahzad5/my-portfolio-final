@@ -1,77 +1,65 @@
 "use client";
-import React, { useState, useRef } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
+import React, { useState } from "react";
+import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
+import CaseStudy from "./CaseStudy";
+import ProjectRow from "./ProjectRow";
 import { projectsData, projectTags } from "@/data/projectData";
-import { projectsIntro } from "@/data/site";
+import { sections } from "@/data/site";
 
-const cardVariants = {
-  initial: { y: 50, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-};
+const pad = (n) => String(n).padStart(2, "0");
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
-  const filteredProjects = projectsData.filter(
-    (project) => tag === "All" || project.tags.includes(tag)
-  );
-
-  // Standard cards are laid out 3 per row on lg and 2 per row on md. If the last row would be
-  // short, stretch its cards so the grid never ends with an empty slot.
-  const standard = filteredProjects.filter((project) => project.tier !== "featured");
-  const spanClass = (project) => {
-    if (project.tier === "featured") return "md:col-span-2 lg:col-span-3";
-    const index = standard.indexOf(project);
-    const fromEnd = standard.length - index;
-    const lgRemainder = standard.length % 3;
-    let classes = "lg:col-span-2";
-    if (lgRemainder === 1 && fromEnd <= 4 && standard.length >= 4) classes = "lg:col-span-3";
-    if (lgRemainder === 2 && fromEnd <= 2) classes = "lg:col-span-3";
-    if (standard.length % 2 === 1 && fromEnd === 1) classes += " md:col-span-2";
-    return classes;
-  };
+  const filtered = projectsData.filter((project) => tag === "All" || project.tags.includes(tag));
+  const featured = filtered.filter((project) => project.tier === "featured");
+  const rows = filtered.filter((project) => project.tier !== "featured");
+  const countFor = (name) =>
+    projectsData.filter((project) => name === "All" || project.tags.includes(name)).length;
 
   return (
-    <section id="projects" className="pt-16 md:pt-20">
-      <h2 className="text-center text-4xl font-bold text-white mb-3">
-        {projectsIntro.heading}
-      </h2>
-      <p className="mx-auto mb-2 max-w-2xl text-center text-[#ADB7BE]">{projectsIntro.subheading}</p>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+    <section id="projects" className="scroll-mt-24 py-16">
+      <SectionHeader {...sections.projects} />
+
+      <Reveal className="mb-8 flex flex-wrap gap-2" y={12}>
         {projectTags.map((name) => (
-          <ProjectTag key={name} onClick={setTag} name={name} isSelected={tag === name} />
-        ))}
-      </div>
-      <ul
-        ref={ref}
-        className="grid items-start gap-8 md:grid-cols-2 lg:grid-cols-6"
-      >
-        {filteredProjects.map((project, index) => (
-          <motion.li
-            key={project.id}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: Math.min(index, 8) * 0.1 }}
-            className={spanClass(project)}
+          <button suppressHydrationWarning
+            key={name}
+            type="button"
+            onClick={() => setTag(name)}
+            aria-pressed={tag === name}
+            className={`cursor-pointer rounded-full border px-4 py-1.5 text-sm transition-colors ${
+              tag === name
+                ? "border-primary-500 bg-primary-500/10 text-white"
+                : "border-[#33353F] text-[#ADB7BE] hover:border-white hover:text-white"
+            }`}
           >
-            <ProjectCard
-              title={project.title}
-              summary={project.summary}
-              details={project.details}
-              image={project.image}
-              links={project.links}
-              techStack={project.techStack}
-              status={project.status}
-              featured={project.tier === "featured"}
-            />
-          </motion.li>
+            {name} <span className="ml-1 text-slate-500">{countFor(name)}</span>
+          </button>
         ))}
-      </ul>
+      </Reveal>
+
+      {featured.length > 0 && (
+        <div className="space-y-8">
+          {featured.map((project, index) => (
+            <CaseStudy key={project.id} number={pad(index + 1)} project={project} />
+          ))}
+        </div>
+      )}
+
+      {rows.length > 0 && (
+        <ul className={`border-b border-[#33353F] ${featured.length > 0 ? "mt-12" : ""}`}>
+          {rows.map((project, index) => (
+            <ProjectRow
+              key={project.id}
+              number={pad(featured.length + index + 1)}
+              project={project}
+              delay={Math.min(index, 6) * 0.04}
+            />
+          ))}
+        </ul>
+      )}
     </section>
   );
 };

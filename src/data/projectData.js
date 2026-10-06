@@ -2,7 +2,7 @@
 // Tech names must match keys in icons.jsx; names without an icon render as a text pill.
 //
 // Schema:
-//   id, title, summary, details?, tags: ["AI" | "Web"], tier: "featured" | "standard",
+//   id, title, summary, details?, tags: ["AI" | "Web"], tier: "featured" | "standard", (featured: type, role),
 //   status?: "wip", links: [{ label, url }], techStack: [name], image?
 
 const gh = (repo) => `https://github.com/AhsanShahzad5/${repo}`;
@@ -20,6 +20,8 @@ export const projectsData = [
       "I wanted a RAG system I could actually measure, so I built one over five books (system design, ML systems and data-intensive applications). Two decoupled pipelines do the work: one turns the PDFs into layout-aware markdown with chapter and section metadata, the other chunks, embeds and indexes them in Pinecone with both dense vectors and BM25 keyword search. At query time dense and keyword results are fused with Reciprocal Rank Fusion, reranked, and the top five go to a LangGraph flow that rewrites follow-up questions only when history is needed and routes between book lookups and RAG answers. I also built an evaluation suite around it: golden datasets covering retrieval, answer quality, safety, latency and cost, regression checks that compare every change against a baseline and return a pass/review/fail for CI, and online scoring of live LangSmith traces. The eval structure follows a CampusX course; the implementation, registry and tolerance tuning are my own. Known gap: it doesn't index images or diagrams.",
     tags: ["AI"],
     tier: "featured",
+    type: "RAG assistant + evaluation suite",
+    role: "Personal project, built solo",
     status: "wip",
     links: [{ label: "GitHub", url: gh("System-Design-Mentor-Hybrid-RAG-with-an-Evals") }],
     techStack: ["LangGraph", "Pinecone", "OpenAI", "LangSmith", "PyMuPDF"],
@@ -33,37 +35,39 @@ export const projectsData = [
       "The model is a VGG16 transfer-learning classifier with data augmentation, early stopping and learning-rate scheduling. The part I care about is the structure around it: a configuration-driven design (YAML configs, typed entities, a configuration manager) feeding a four-stage DVC pipeline for ingestion, base-model preparation, training and evaluation. DVC tracks parameters, so when I change one only the stages it affects re-run. Runs are logged to MLflow with their parameters, metrics and models. Serving and deployment are the next steps and not part of what's published here yet.",
     tags: ["AI"],
     tier: "featured",
+    type: "Deep learning + MLOps pipeline",
+    role: "Personal project, built solo",
     status: "wip",
     links: [{ label: "GitHub", url: gh("Chest-Cancer-Classification-Deep-Learning-Project") }],
     techStack: ["TensorFlow", "Keras", "DVC", "MLflow", "Python"],
   },
 
-  // ---------- AI: agents and LLM tooling ----------
   {
-    id: 3,
-    title: "Email Agent with Human Approval",
-    summary: "A LangGraph agent that drafts an email, then waits for a human before sending anything.",
+    id: 14,
+    title: "PsyLink: A Mental Wellness Platform with an AI Companion",
+    summary:
+      "My final-year project: a mental health web platform with anonymous therapy sessions, an AI-powered Vent Buddy and a community, built with anonymity and data security in mind.",
     details:
-      "Given a recipient, subject and tone, the agent drafts an email and decides for itself whether it needs a web search to get the facts right. When the draft is ready, the graph pauses with an interrupt and saves its state to a SQLite checkpoint. Approving or editing the draft over the API resumes the same conversation thread and only then sends it. Nothing is sent during generation. It's a small project, but it shows human-in-the-loop done properly.",
-    tags: ["AI"],
-    tier: "standard",
-    links: [{ label: "GitHub", url: gh("Langgraph-Email-Sending-Agent") }],
-    techStack: ["LangGraph", "FastAPI", "SQLite", "Python"],
-  },
-  {
-    id: 4,
-    title: "MCP Servers Project",
-    summary: "The same expense-tracking MCP server built two ways, local and remote, plus a custom client.",
-    details:
-      "A learning project for the Model Context Protocol. The expense server exposes tools to add, list and summarize expenses, once as a local server over stdio and once as a remote HTTP service. A custom FastAPI client connects an LLM to a weather MCP server over stdio and to the remote expense server over HTTP.",
-    tags: ["AI"],
-    tier: "standard",
-    links: [
-      { label: "GitHub", url: gh("MCP-Servers-Project") },
-      { label: "Remote server practice", url: gh("remote-mcp-server-practice") },
+      'PsyLink lets people get mental health support without exposing who they are. Users can join anonymous therapy sessions, talk to an AI "Vent Buddy" powered by Gemini 2.0, and share experiences in a community, while patients and professionals get the tools they need on the same platform.',
+    highlights: [
+      "Anonymous therapy sessions, an AI-powered Vent Buddy and a community for sharing experiences, with anonymity and data security built in.",
+      "Appointment scheduling and calendar management, secure payments, and video, voice and chat sessions between patients and mental health professionals.",
+      "Tools for users: mood tracking, therapeutic exercise monitoring, journaling and prescription management, to track progress over time.",
+      "Role-based access for patients, doctors and admins, plus real-time notifications and data analytics.",
     ],
-    techStack: ["MCP", "FastAPI", "Python", "OpenAI"],
+    tags: ["AI", "Web"],
+    tier: "featured",
+    badges: ["FYP"],
+    type: "Full-stack web platform with AI features",
+    role: "Final-year project",
+    links: [
+      { label: "Frontend", url: gh("PsyLink-Frontend") },
+      { label: "Backend", url: gh("PsyLink-Backend") },
+    ],
+    techStack: ["MongoDB", "Express.js", "React.js", "Node.js", "Gemini", "Tailwind CSS", "TypeScript", "Shadcn UI"],
   },
+
+  // ---------- AI: agents and LLM tooling ----------
   {
     id: 5,
     title: "Fine-tuned BERT Sentiment App",
@@ -161,6 +165,31 @@ export const projectsData = [
     techStack: ["TensorFlow", "Keras", "scikit-learn"],
   },
   {
+    id: 3,
+    title: "Email Agent with Human Approval",
+    summary: "A LangGraph agent that drafts an email, then waits for a human before sending anything.",
+    details:
+      "Given a recipient, subject and tone, the agent drafts an email and decides for itself whether it needs a web search to get the facts right. When the draft is ready, the graph pauses with an interrupt and saves its state to a SQLite checkpoint. Approving or editing the draft over the API resumes the same conversation thread and only then sends it. Nothing is sent during generation. It's a small project, but it shows human-in-the-loop done properly.",
+    tags: ["AI"],
+    tier: "standard",
+    links: [{ label: "GitHub", url: gh("Langgraph-Email-Sending-Agent") }],
+    techStack: ["LangGraph", "FastAPI", "SQLite", "Python"],
+  },
+  {
+    id: 4,
+    title: "MCP Servers Project",
+    summary: "The same expense-tracking MCP server built two ways, local and remote, plus a custom client.",
+    details:
+      "A learning project for the Model Context Protocol. The expense server exposes tools to add, list and summarize expenses, once as a local server over stdio and once as a remote HTTP service. A custom FastAPI client connects an LLM to a weather MCP server over stdio and to the remote expense server over HTTP.",
+    tags: ["AI"],
+    tier: "standard",
+    links: [
+      { label: "GitHub", url: gh("MCP-Servers-Project") },
+      { label: "Remote server practice", url: gh("remote-mcp-server-practice") },
+    ],
+    techStack: ["MCP", "FastAPI", "Python", "OpenAI"],
+  },
+  {
     id: 13,
     title: "MLflow Remote Tracking Demo",
     summary: "Experiment tracking three ways: locally, on DagsHub and on my own remote server.",
@@ -173,20 +202,6 @@ export const projectsData = [
   },
 
   // ---------- Web and full-stack (earlier work, kept) ----------
-  {
-    id: 14,
-    title: "PsyLink",
-    summary: "My final-year project: a mental wellness platform with an AI companion.",
-    details:
-      'Anonymous therapy sessions, an AI "Vent Buddy" powered by Gemini, community, appointments, mood tracking and journaling, with role-based access for patients, doctors and admins. Built on the MERN stack with TypeScript and Shadcn UI.',
-    tags: ["AI", "Web"],
-    tier: "standard",
-    links: [
-      { label: "Frontend", url: gh("PsyLink-Frontend") },
-      { label: "Backend", url: gh("PsyLink-Backend") },
-    ],
-    techStack: ["React.js", "Node.js", "Express.js", "MongoDB", "TypeScript", "Gemini"],
-  },
   {
     id: 15,
     title: "SocialLink",

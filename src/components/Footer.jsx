@@ -5,10 +5,10 @@ const linkStyles = "text-[#ADB7BE] hover:text-white";
 
 const Footer = () => {
   return (
-    <footer className="footer border z-10 border-t-[#33353F] border-l-transparent border-r-transparent text-white">
-      <div className="container mx-auto px-12 py-12 flex flex-col gap-4 items-center md:flex-row md:justify-between">
+    <footer className="border-t border-[#33353F] text-white">
+      <div className="mx-auto flex max-w-[77rem] flex-col items-center gap-4 px-6 py-10 text-sm sm:px-10 md:flex-row md:justify-between">
         <span>
-          {footer.name} · {footer.role}
+          {footer.name} <span className="text-slate-500">· {footer.role}</span>
         </span>
         <nav className="flex gap-6">
           <a href={siteLinks.github} target="_blank" rel="noopener noreferrer" className={linkStyles}>

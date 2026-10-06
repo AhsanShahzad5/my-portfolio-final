@@ -5,8 +5,25 @@ export const experience = {
   role: "Associate Software Engineer",
   company: "Folium AI",
   dates: "June 2025 to present",
-  intro:
-    "Folium AI is a service-based company, so I've worked on several very different products. The code belongs to the clients, so I describe the systems here at the level of architecture and design decisions, not code or names.",
+  // The capabilities behind the stories (shown above the timeline). Only claims the stories below support.
+  capabilities: [
+    {
+      title: "Agent workflows",
+      text: "LangGraph routers, ReAct tool calling and parallel fan-out, built into real products.",
+    },
+    {
+      title: "RAG pipelines",
+      text: "Ingestion, chunking and retrieval on Pinecone, with web search only when a question needs it.",
+    },
+    {
+      title: "Reliable LLM output",
+      text: "Structured outputs, per-item failure isolation, model fallbacks and guardrails.",
+    },
+    {
+      title: "Shipping and observing",
+      text: "Docker, CI with mocked-LLM tests, and LangSmith tracing for latency and cost.",
+    },
+  ],
   stories: [
     {
       id: "rag-chatbot",

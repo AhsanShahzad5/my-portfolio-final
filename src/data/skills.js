@@ -22,11 +22,10 @@ export const skillGroups = [
     group: "Frameworks & Libraries",
     items: ["FastAPI", "Django", "Pydantic", "React.js", "Next.js", "Node.js", "Tailwind CSS"],
   },
-  { group: "Databases", items: ["PostgreSQL", "MongoDB", "Pinecone", "Chroma", "Supabase", "Neo4j"] },
   {
     group: "Developer & MLOps Tools",
     items: [
-      "AWS (EC2, S3, IAM, Textract)",
+      "AWS",
       "Docker",
       "Git",
       "GitHub Actions",
@@ -41,6 +40,7 @@ export const skillGroups = [
     group: "Core",
     items: ["REST APIs", "Asynchronous Programming", "OOP", "DSA", "Agile"],
   },
+  { group: "Databases", items: ["PostgreSQL", "MongoDB", "Pinecone", "Chroma", "Supabase", "Neo4j"] },
   {
     group: "Web & Mobile (earlier work)",
     items: [
@@ -56,5 +56,5 @@ export const skillGroups = [
   },
 ];
 
-// "AWS (EC2, S3, IAM, Textract)" should use the AWS icon.
+// "AWS" should use the AWS icon.
 export const skillIconKey = (name) => (name.startsWith("AWS") ? "AWS" : name);
