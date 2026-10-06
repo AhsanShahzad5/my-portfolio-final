@@ -49,13 +49,13 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, techStack
       <div className="text-white rounded-b-xl mt-3 bg-[#181818] py-6 px-4 
       /*md:h-80 lg:h-40/*
       ">
-      <div className="md:h-[11rem] lg:h-[9rem]">
+      <div className="md:h-44 lg:h-36">
         <h5 className="text-xl font-semibold mb-2">{title}</h5>
         <p className="text-[#ADB7BE] mb-3">{description}</p>
       </div>
         <div
           className="flex items-center gap-2 transition duration-300   flex-wrap hover:border-2 hover:border-primary-500 hover:rounded-lg text-center" >
-          {techStack}
+          {React.Children.toArray(techStack)}
         </div>
       </div>
     </div>
